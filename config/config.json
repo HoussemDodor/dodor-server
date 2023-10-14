@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "",
-    "database": "tutorialdb",
-    "host": "localhost",
+    "username": "u48319_M.Dodor",
+    "password": "TempPassword123#",
+    "database": "db48319_DodorTegels",
+    "host": "91.184.19.106",
     "dialect": "mysql"
   },
   "test": {
