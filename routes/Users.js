@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
+const { validateToken } = require("../middleware/AuthMiddleware");
 
 const { sign } = require("jsonwebtoken");
 
-router.get("/", async (req, res) => {
+router.get("/", validateToken, async (req, res) => {
   const listofUsers = await Users.findAll();
   res.json(listofUsers);
 });
@@ -40,7 +41,7 @@ router.post("/login", async (req, res) => {
         "CHANGE_THIS_SECRET_LATER"
       );
       res.json({ accestoken: accestoken });
-    }    
+    }
   });
 });
 
