@@ -13,7 +13,8 @@ app.use(errorHandler);
 const db = require("./models");
 
 // Routers
-app.use("/auth", require("./routes/Auth"));
+app.use("/register", require("./routes/register"))
+app.use("/auth", require("./routes/auth"));
 app.use("/users", require("./routes/Users"));
 
 db.sequelize.sync().then(() => {
