@@ -36,11 +36,11 @@ router.post("/login", async (req, res) => {
   bcrypt.compare(pwd, user.pwd).then((match) => {
     if (!match) res.json({ error: "Wrong username/password combination" });
     else {
-      const accestoken = sign(
+      const accesToken = sign(
         { username: user.username, id: user.id },
         "CHANGE_THIS_SECRET_LATER"
       );
-      res.json({ accestoken: accestoken });
+      res.json({ accesToken: accesToken });
     }
   });
 });
