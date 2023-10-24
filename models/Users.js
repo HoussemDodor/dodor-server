@@ -3,11 +3,12 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     pwd: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
   });
 
   return Users;
