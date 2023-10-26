@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { Users } = require("../models");
+const userController = require("../controllers/usersController");
+const { verifyJWT } = require("../middleware/verifyJWT");
 
-router.get("/", async (req, res) => {
-  const listofUsers = await Users.findAll();
-  res.json(listofUsers);
-});
-
+router.route("/").get(verifyJWT, userController.getAllUsers);
 
 module.exports = router;

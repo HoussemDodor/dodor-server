@@ -1,5 +1,6 @@
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
+require('dotenv').config();
 
 const handleNewUser = async (req, res) => {
   const { username, pwd } = req.body;
@@ -10,7 +11,6 @@ const handleNewUser = async (req, res) => {
   }
   // check for duplicates
   const duplicate = await Users.findOne({ where: { username: username } });
-  console.log(duplicate);
   if (duplicate) return res.sendStatus(409);
   try {
     const hashedPwd = await bcrypt.hash(pwd, 10); // encrypt password
