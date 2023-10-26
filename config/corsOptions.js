@@ -1,19 +1,15 @@
-const whitelist = [
-  "http://localhost:3001",
-  "http://localhost:3000",
-  "https://app.dodor.nl",
-];
+const allowedOrigins = require("./allowedOrigins.js")
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // TODO: REMOVE ORIGIN WHEN DEPLOYING
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
+    //TODO: REMOVE THE SECOND HALF OF THE IF STATEMENT WHEN DEPLOYING
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+          callback(null, true)
+      } else {
+          callback(new Error('Not allowed by CORS'));
+      }
   },
-  optionsSuccesStatus: 200,
-};
+  optionsSuccessStatus: 200
+}
 
 module.exports = corsOptions;

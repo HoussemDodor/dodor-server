@@ -20,7 +20,7 @@ const handleLogin = async (req, res) => {
     const accesToken = sign(
       { username: foundUser.username },
       process.env.ACCES_TOKEN_SECRET,
-      { expiresIn: "60s" }
+      { expiresIn: "1h" }
     );
     const refreshToken = sign(
       { username: foundUser.username },
@@ -38,6 +38,8 @@ const handleLogin = async (req, res) => {
     }
     res.cookie("jwt", refreshToken, {
       httpOnly: true,
+      sameSite: 'None',
+      secure: true,
       maxAge: 24 * 60 * 60 * 1000 * 7,
     });
     res.json({ accesToken });
