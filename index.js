@@ -27,6 +27,7 @@ app.use("/logout", require("./routes/logout"));
 app.use(verifyJWT);
 app.use("/users", require("./routes/users"));
 
+// use { alter: true } as a parameter in .sync() to update the database in mySQL
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {
     console.log("Server running on port 3001");
