@@ -1,5 +1,3 @@
-const Users = require("./Users");
-
 module.exports = (sequelize, DataTypes) => {
   const Customers = sequelize.define("Customers", {
     Name: {
@@ -53,7 +51,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Customers.hasOne(Users, { foreignKey: "RegisteredByUserID" });
+
+  Customers.associate = (models) => {
+    Customers.hasOne(models.Users, { foreignKey: "RegisteredByUserID" });
+  };
 
   return Customers;
 };

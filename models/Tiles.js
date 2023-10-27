@@ -1,6 +1,3 @@
-const Suppliers = require("./Suppliers");
-const Users = require("./Users");
-
 module.exports = (sequelize, DataTypes) => {
   const Tiles = sequelize.define("Tiles", {
     ArtNrSupplier: {
@@ -70,8 +67,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Tiles.hasOne(Users, { foreignKey: "LastModifiedByUserID" });
-  Tiles.hasOne(Suppliers);
+  Tiles.associate = (models) => {
+    Tiles.hasOne(models.Users, { foreignKey: "LastModifiedByUserID" });
+    Tiles.hasOne(models.Suppliers);
+  };
 
   return Tiles;
 };
