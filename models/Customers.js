@@ -51,10 +51,5 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-
-  Customers.associate = (models) => {
-    Customers.hasOne(models.Users, { foreignKey: "RegisteredByUserID" });
-  };
-
   return Customers;
 };

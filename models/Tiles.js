@@ -67,11 +67,6 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Tiles.associate = (models) => {
-    Tiles.hasOne(models.Users, { foreignKey: "LastModifiedByUserID" });
-    Tiles.hasOne(models.Suppliers);
-  };
-
   return Tiles;
 };
 /*  
